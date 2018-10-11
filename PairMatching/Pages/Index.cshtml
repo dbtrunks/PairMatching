@@ -1,0 +1,72 @@
+﻿@page "{id?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@Html.AntiForgeryToken()
+<link href="~/css/index.css" rel="stylesheet" />
+
+<h4>Połącz pary.</h4>
+<div class="form-group pull-right">
+    <div class="form-inline">
+        <label>Poziom: </label> <select id="selectPairs" asp-for="Select" asp-items="Model.SelectList" class="form-control"></select>
+    </div>
+</div>
+<div id="secondTenthsExample" class="text-center">
+    <div class="values" style="font-size:34px; font-weight: bold;"></div>
+</div>
+<div class="center-block">
+    <table id="tab" class="table">
+
+        @for (int i = 0; i < @Model.Pairs.GetLength(0); i++)
+        {
+            <tr>
+                @for (int j = 0; j < @Model.Pairs.GetLength(1); j++)
+                {
+                    <td class="@("td" + Model.Select)">
+                        <div class="flip-box click">
+                            <p hidden>@i,@j</p>
+                            <div class="flip-box-inner">
+                                <div class="flip-box-front">
+                                    <i class="fab fa-dribbble-square"></i>
+                                </div>
+                                <div class="flip-box-back">
+                                    <i></i>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="margin-left: 10px">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Wynik</h4>
+            </div>
+            <div class="modal-body text-center">
+                <label id="messages"></label>
+            </div>
+            <form asp-page-handler="SaveScore" method="POST" class="form-inline text-center">
+                <label>Nick: </label>
+                <div class="form-group">
+                    <input name="Nick" class="form-control" />
+                </div>
+                <input id="inputTime" name="Time" class="hidden" />
+                <div class="modal-footer" style="margin-top: 20px;">
+                    <button type="button" id="res" class="btn btn-secondary" data-dismiss="modal">Restartuj</button>
+                    <button type="submit" id="save " class="btn btn-primary">Zapisz wynik</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/index.js"></script>
+}

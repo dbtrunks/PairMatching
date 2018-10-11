@@ -1,0 +1,29 @@
+﻿@page
+@model TopModel
+
+<h2>Top 15</h2>
+<samp>Lista najlepszych wyników</samp>
+
+<div style="font-size: 22px; margin-top: 20px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Czasa</th>
+                <th scope="col">Poziom</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Top.Count(); i++)
+            {
+                <tr>
+                    <td>@(i + 1).</td>
+                    <td>@Model.Top[i].Name</td>
+                    <td>@Model.Top[i].Time</td>
+                    <td>@Model.Top[i].Pairs</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
