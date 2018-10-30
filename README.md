@@ -1,6 +1,8 @@
 # PairMatching
-1. Założenie bazy danych:
+1. Build aplikacji:
+	dotnet build
+2. Założenie bazy danych:
     dotnet ef database update
-2. Uruchomenie aplikacji:
+3. Uruchomenie aplikacji:
     dotnet run
   

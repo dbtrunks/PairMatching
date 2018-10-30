@@ -1,6 +1,7 @@
 ﻿#tab {
     border-collapse: separate;
     border-spacing: 15px;
+    min-width: 1000px;
 }
 
     #tab td {
