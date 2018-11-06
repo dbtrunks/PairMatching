@@ -7,8 +7,8 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-- script: dotnet publish -c Release --output ./
+- script: dotnet publish -c Release --output ./PublishApp
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(System.DefaultWorkingDirectory)'
+    pathtoPublish: '$(System.DefaultWorkingDirectory)/PairMatching/PublishApp'
     artifactName: WebApp
