@@ -6,11 +6,8 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
-variables:
-  buildConfiguration: 'Release'
-
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet publish -c Release --output ./
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(System.DefaultWorkingDirectory)'
